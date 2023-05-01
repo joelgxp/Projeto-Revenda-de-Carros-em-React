@@ -1,5 +1,11 @@
 import React from "react";
+import { Provider } from 'react-redux';
+import { store } from "./store/store"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Rotas from "./Routes";
+import { BrowserRouter as Router} from 'react-router-dom';
+
 
 const theme = createTheme({
   palette: {
@@ -19,9 +25,13 @@ const theme = createTheme({
 });
 
 const App = () => (
-  <ThemeProvider theme={theme}>
-   
-  </ThemeProvider>
-);
+  <Router>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Rotas />
+      </ThemeProvider>
+    </Provider>
+  </Router>
+)
 
 export default App;
